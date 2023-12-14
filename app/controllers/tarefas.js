@@ -75,7 +75,7 @@ module.exports = function (application) {
             try {
                 results = await application.app.models.tarefas.sistuacaoTarefa(2, id);
                 let url = req.rawHeaders[25];
-                let urlChamadora = url.replace("http://localhost:3000", "");
+                let urlChamadora = url.replace(process.env.URL_BASE, "");
                 res.redirect(urlChamadora);
             } catch (e) {
                 console.log(e);
@@ -88,7 +88,7 @@ module.exports = function (application) {
             try {
                 results = await application.app.models.tarefas.sistuacaoTarefa(1, id);
                 let url = req.rawHeaders[25];
-                let urlChamadora = url.replace("http://localhost:3000", "");
+                let urlChamadora = url.replace(process.env.URL_BASE, "");
                 res.redirect(urlChamadora);
             } catch (e) {
                 console.log(e);

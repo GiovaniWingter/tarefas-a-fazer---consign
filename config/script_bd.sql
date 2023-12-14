@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `lista-tarefas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `lista-tarefas`;
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: lista-tarefas
 -- ------------------------------------------------------
@@ -28,7 +28,8 @@ CREATE TABLE `tarefas` (
   `id_tarefa` int NOT NULL AUTO_INCREMENT,
   `nome_tarefa` varchar(45) NOT NULL,
   `prazo_tarefa` date NOT NULL,
-  `situaca_tarefa` int NOT NULL DEFAULT '1',
+  `situacao_tarefa` int NOT NULL DEFAULT '0',
+  `status_tarefa` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_tarefa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +40,7 @@ CREATE TABLE `tarefas` (
 
 LOCK TABLES `tarefas` WRITE;
 /*!40000 ALTER TABLE `tarefas` DISABLE KEYS */;
-INSERT INTO `tarefas` VALUES (1,'Formatar PC do Cliente 1','2022-06-25',1),(2,'Instalar Antivirus no PC do Cliente 2','2022-06-20',1),(3,'Formatar PC do Cliente 2','2022-06-28',1),(4,'Instalar Antivirus no PC do Cliente 2','2022-06-22',1);
+INSERT INTO `tarefas` VALUES (1,'Formatar PC do Cliente 1','2025-04-11',1,1),(2,'Instalar Antivirus no PC do Cliente 2','2025-06-20',1,1),(3,'Formatar PC do Cliente 2','2025-06-28',1,1),(4,'Instalar Antivirus no PC do Cliente 2','2025-10-28',1,1);
 /*!40000 ALTER TABLE `tarefas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-13 10:45:26
+-- Dump completed on 2023-12-14 17:20:46
