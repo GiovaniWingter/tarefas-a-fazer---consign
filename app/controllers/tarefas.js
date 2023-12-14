@@ -75,6 +75,7 @@ module.exports = function (application) {
             try {
                 results = await application.app.models.tarefas.sistuacaoTarefa(2, id);
                 let posicao = await application.app.models.tarefas.posicaoReg(id);
+                console.log(id);
                 let url = "/?pagina=" + Math.ceil(posicao[0].numero_ordem / 5);
                 res.redirect(url);
                 // let url = req.rawHeaders[25];
