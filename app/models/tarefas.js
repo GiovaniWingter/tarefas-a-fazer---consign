@@ -67,7 +67,7 @@ module.exports = function (application) {
 
         totalReg: async ()=>{
             try {
-                const [resultados] = await application.config.pool_conexoes.query('SELECT count(*) total FROM tarefas  WHERE status_tarefa = 1')
+                const [resultados] = await application.config.pool_conexoes.query('SELECT count(*) as total FROM tarefas  WHERE status_tarefa = 1')
                 return resultados;
             } catch (error) {
                 return error;
