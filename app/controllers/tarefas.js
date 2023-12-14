@@ -16,6 +16,7 @@ module.exports = function (application) {
                 inicio = parseInt(pagina - 1) * 5
                 results = await application.app.models.tarefas.findPage(inicio, 5);
                 totReg = await application.app.models.tarefas.totalReg();
+                console.log(totReg);
                 totPaginas = Math.ceil(totReg[0].total / 5);
                 var paginador = totReg[0].total <= 5 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas };
                 res.render("pages/index", { tarefas: results, paginador: paginador });
