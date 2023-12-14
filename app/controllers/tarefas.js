@@ -74,9 +74,12 @@ module.exports = function (application) {
             let { id } = req.query;
             try {
                 results = await application.app.models.tarefas.sistuacaoTarefa(2, id);
-                let url = req.rawHeaders[25];
-                let urlChamadora = url.replace(process.env.URL_BASE, "");
-                res.redirect(urlChamadora);
+                let posicao = await application.app.models.tarefas.posicaoReg(id);
+                let url = "/?pagina=" + Math.ceil(posicao[0].numero_ordem / 5);
+                res.redirect(url);
+                // let url = req.rawHeaders[25];
+                // let urlChamadora = url.replace(process.env.URL_BASE, "");
+                // res.redirect(urlChamadora);
             } catch (e) {
                 console.log(e);
                 res.json({ erro: "Falha ao acessar dados" });
@@ -87,9 +90,12 @@ module.exports = function (application) {
             let { id } = req.query;
             try {
                 results = await application.app.models.tarefas.sistuacaoTarefa(1, id);
-                let url = req.rawHeaders[25];
-                let urlChamadora = url.replace(process.env.URL_BASE, "");
-                res.redirect(urlChamadora);
+                let posicao = await application.app.models.tarefas.posicaoReg(id);
+                let url = "/?pagina=" + Math.ceil(posicao[0].numero_ordem / 5);
+                res.redirect(url);
+                // let url = req.rawHeaders[25];
+                // let urlChamadora = url.replace(process.env.URL_BASE, "");
+                // res.redirect(urlChamadora);
             } catch (e) {
                 console.log(e);
                 res.json({ erro: "Falha ao acessar dados" });
