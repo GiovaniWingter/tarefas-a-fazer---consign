@@ -1,8 +1,8 @@
 module.exports = function (application) {
   const router = application.config.middlewares.express.Router();
   
-  router.get("/", async function (req, res) {
-    await application.app.controllers.tarefas.listarTarefasPaginadas(application, req, res);
+  router.get("/",  function (req, res) {
+     application.app.controllers.tarefas.listarTarefasPaginadas(application, req, res);
   });
   
   router.get("/adicionar", function (req, res) {
