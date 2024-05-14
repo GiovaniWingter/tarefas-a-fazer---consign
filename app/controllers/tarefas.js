@@ -7,18 +7,20 @@ module.exports = function (application) {
             application.config.middlewares.body("prazo").isISO8601(),
             application.config.middlewares.body("situacao").isNumeric()
         ],
-
+        
         listarTarefasPaginadas: async (application, req, res) => {
             res.locals.moment = application.config.middlewares.moment;
             try {
                 let pagina = req.query.pagina == undefined ? 1 : req.query.pagina;
-                var results = null
-                inicio = parseInt(pagina - 1) * 5
-                results = await application.app.models.tarefas.findPage(inicio, 5);
-                totReg = await application.app.models.tarefas.totalReg();
-                console.log(totReg);
-                totPaginas = Math.ceil(totReg[0].total / 5);
-                var paginador = totReg[0].total <= 5 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas };
+                let results = null
+                let regPagina = 5
+                let inicio = parseInt(pagina - 1) * regPagina
+                let totReg = await tarefasModel.totalReg();
+                let totPaginas = Math.ceil(totReg[0].total / regPagina);
+                results = await tarefasModel.findPage(inicio, regPagina);
+                let paginador = totReg[0].total <= regPagina 
+                    ? null 
+                    : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas };
                 res.render("pages/index", { tarefas: results, paginador: paginador });
             } catch (e) {
                 console.log(e); // exibir os erros no console do vs code

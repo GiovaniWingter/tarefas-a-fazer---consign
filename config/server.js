@@ -1,5 +1,5 @@
 module.exports = (application) => {
-    const env = require("dotenv").config();
+    
 
     application.use(application.config.middlewares.express.static("./app/public"));
 
