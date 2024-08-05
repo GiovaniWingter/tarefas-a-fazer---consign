@@ -15,9 +15,9 @@ module.exports = function (application) {
                 let results = null
                 let regPagina = 5
                 let inicio = parseInt(pagina - 1) * regPagina
-                let totReg = await tarefasModel.totalReg();
+                let totReg = await application.app.models.tarefas.totalReg();
                 let totPaginas = Math.ceil(totReg[0].total / regPagina);
-                results = await tarefasModel.findPage(inicio, regPagina);
+                results = await application.app.models.tarefas.findPage(inicio, regPagina);
                 let paginador = totReg[0].total <= regPagina 
                     ? null 
                     : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas };
